@@ -14,7 +14,8 @@ typedef void (^IndexChangeBlock)(NSInteger index);
 typedef NSAttributedString *(^HMTitleFormatterBlock)(HMSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected);
 
 typedef NS_ENUM(NSInteger, HMSegmentedControlSelectionStyle) {
-    HMSegmentedControlSelectionStyleTextWidthStripe, // Indicator width will only be as big as the text width test
+    HMSegmentedControlSelectionStyleTextWidthStripe, // Indicator width will only be as big as the text width
+    HMSegmentedControlSelectionStyleSpecifiesWidthStripe, // Indicator width is specifies
     HMSegmentedControlSelectionStyleFullWidthStripe, // Indicator width will fill the whole segment
     HMSegmentedControlSelectionStyleBox, // A rectangle that covers the whole segment
     HMSegmentedControlSelectionStyleArrow // An arrow in the middle of the segment pointing up or down depending on `HMSegmentedControlSelectionIndicatorLocation`
@@ -193,6 +194,13 @@ typedef NS_ENUM(NSInteger, HMSegmentedControlImagePosition) {
  Default is `1.0f`
  */
 @property (nonatomic, assign) CGFloat borderWidth;
+
+/**
+ Specifies the indicator width.
+ 
+ Default is `0.0f`
+ */
+@property (nonatomic, readwrite) CGFloat indicatorWidth;
 
 /**
  Default is YES. Set to NO to deny scrolling by dragging the scrollView by the user.
