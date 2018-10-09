@@ -227,7 +227,7 @@
     CGSize size = CGSizeZero;
     BOOL selected = (index == self.selectedSegmentIndex) ? YES : NO;
     if ([title isKindOfClass:[NSString class]] && !self.titleFormatter) {
-        NSDictionary *titleAttrs = selected ? [self resultingSelectedTitleTextAttributes] : [self resultingTitleTextAttributes];
+        NSDictionary *titleAttrs = [self resultingSelectedTitleTextAttributes] ? : [self resultingTitleTextAttributes];
         size = [(NSString *)title sizeWithAttributes:titleAttrs];
         UIFont *font = titleAttrs[@"NSFont"];
         size = CGSizeMake(ceil(size.width), ceil(size.height-font.descender));
