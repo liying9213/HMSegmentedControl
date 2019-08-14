@@ -849,7 +849,7 @@
     if (self.type == HMSegmentedControlTypeText && self.segmentWidthStyle == HMSegmentedControlSegmentWidthStyleFixed) {
         return self.sectionTitles.count * self.segmentWidth;
     } else if (self.segmentWidthStyle == HMSegmentedControlSegmentWidthStyleDynamic) {
-        return [[self.segmentWidthsArray valueForKeyPath:@"@sum.self"] floatValue];
+        return [[self.segmentWidthsArray valueForKeyPath:@"@sum.self"] floatValue]+(self.segmentEdgeInset.left + self.segmentEdgeInset.right)*self.segmentWidthsArray.count;
     } else {
         return self.sectionImages.count * self.segmentWidth;
     }
