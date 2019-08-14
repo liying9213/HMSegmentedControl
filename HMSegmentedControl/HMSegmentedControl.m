@@ -315,6 +315,14 @@
                     xOffset = xOffset + [width floatValue] + self.segmentEdgeInset.left + self.segmentEdgeInset.right ;
                     i++;
                 }
+                if (self.selectedSegmentIndex != idx) {
+                    NSDictionary *titleAttrs = [self resultingTitleTextAttributes];
+                    CGSize norSize = [(NSString *)titleString sizeWithAttributes:titleAttrs];
+                    UIFont *font = titleAttrs[@"NSFont"];
+                    norSize = CGSizeMake(ceil(size.width), ceil(size.height-font.descender));
+                    float value = fabsf(size.height - norSize.height)/2;
+                    y += value;
+                }
                 
                 CGFloat widthForIndex = [[self.segmentWidthsArray objectAtIndex:idx] floatValue];
                 rect = CGRectMake(xOffset, y, widthForIndex, stringHeight);
@@ -817,7 +825,7 @@
             // To know which segment the user touched, we need to loop over the widths and substract it from the x position.
             CGFloat widthLeft = (touchLocation.x + self.scrollView.contentOffset.x);
             for (NSNumber *width in self.segmentWidthsArray) {
-                widthLeft = widthLeft - [width floatValue];
+                widthLeft = widthLeft - [width floatValue] - self.segmentEdgeInset.left - self.segmentEdgeInset.right;
                 
                 // When we don't have any width left to substract, we have the segment index.
                 if (widthLeft <= 0)
