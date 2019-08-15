@@ -320,7 +320,7 @@
                     CGSize norSize = [(NSString *)titleString sizeWithAttributes:titleAttrs];
                     UIFont *font = titleAttrs[@"NSFont"];
                     norSize = CGSizeMake(ceil(size.width), ceil(size.height-font.descender));
-                    float value = fabsf(size.height - norSize.height)/2;
+                    float value = fabsf(size.height - norSize.height)/3;
                     y += value;
                 }
                 
