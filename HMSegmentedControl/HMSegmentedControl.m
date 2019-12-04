@@ -315,7 +315,9 @@
                     xOffset = xOffset + [width floatValue] + self.segmentEdgeInset.left + self.segmentEdgeInset.right ;
                     i++;
                 }
-                if (self.selectedSegmentIndex != idx) {
+                UIFont *normalFont = [self.titleTextAttributes objectForKey:NSFontAttributeName];
+                UIFont *selectFont = [self.selectedTitleTextAttributes objectForKey:NSFontAttributeName];
+                if (self.selectedSegmentIndex != idx || normalFont == selectFont) {
                     NSDictionary *titleAttrs = [self resultingTitleTextAttributes];
                     CGSize norSize = [(NSString *)titleString sizeWithAttributes:titleAttrs];
                     UIFont *font = titleAttrs[@"NSFont"];
