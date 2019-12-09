@@ -104,6 +104,11 @@ typedef NS_ENUM(NSInteger, HMSegmentedControlImagePosition) {
  */
 @property (nonatomic, strong) UIColor *selectionIndicatorColor UI_APPEARANCE_SELECTOR;
 
+
+/// 选中线圆角
+@property (nonatomic, assign) BOOL selectionIndicatorNeedCornerRadius;
+
+
 /**
  Color for the selection indicator box
  

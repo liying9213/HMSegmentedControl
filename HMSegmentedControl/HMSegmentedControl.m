@@ -216,6 +216,11 @@
     [self setNeedsDisplay];
 }
 
+- (void)setSelectionIndicatorHeight:(CGFloat)selectionIndicatorHeight{
+    _selectionIndicatorHeight = selectionIndicatorHeight;
+    self.selectionIndicatorStripLayer.cornerRadius = self.selectionIndicatorHeight/2.0;
+}
+
 #pragma mark - Drawing
 
 - (CGSize)measureTitleAtIndex:(NSUInteger)index {
@@ -317,7 +322,7 @@
                 }
                 UIFont *normalFont = [self.titleTextAttributes objectForKey:NSFontAttributeName];
                 UIFont *selectFont = [self.selectedTitleTextAttributes objectForKey:NSFontAttributeName];
-                if (self.selectedSegmentIndex != idx || normalFont == selectFont) {
+                if (self.selectedSegmentIndex != idx || normalFont.pointSize == selectFont.pointSize) {
                     NSDictionary *titleAttrs = [self resultingTitleTextAttributes];
                     CGSize norSize = [(NSString *)titleString sizeWithAttributes:titleAttrs];
                     UIFont *font = titleAttrs[@"NSFont"];
